@@ -123,11 +123,28 @@ Also: a hand-labelled "gold" game to measure label accuracy per play type.
 
 ---
 
-## 6. Open decisions for the founder
-1. **Region/market:** Europe lower tiers (recommended) vs US college?
-2. **Video source for the pilot:** league licence, club partner footage, or own recordings?
-3. **Budget & timeline** for Phase 0–1.
-4. **Who is building:** founder + Claude only, or additional engineers?
+## 6. Decisions (2026-10-28)
+1. **Market:** Europe.
+2. **Video source:** none yet → build **stats-first**; video plugs in later via play-by-play + game clock alignment.
+3. **Budget & timeline:** open.
+4. **Team:** founder + Claude.
+
+### Revised Phase 1 — stats-first (no video required)
+Public play-by-play with shot coordinates already supports much of the fingerprint
+(shot zones incl. corner 3s, assisted vs unassisted makes, fast-break points,
+turnovers, fouls drawn, rebounds, on/off lineups).
+
+1. **Ingest:** adapters for EuroLeague/EuroCup live API (development data, rich
+   PBP + shot coordinates) and FIBA LiveStats JSON (used by many national/second-tier leagues).
+2. **Normalise** into one schema: competitions, games, teams, players, events, shots.
+3. **Fingerprint v0:** per-player rates per 100 possessions + attempts + confidence
+   intervals, adjusted for competition strength.
+4. **Search:** natural-language request → structured filter (LLM) → SQL + vector similarity;
+   every percentage shown with its sample size.
+5. **Demo** to clubs/agents/leagues; use it to pitch a video licence.
+
+Note: data licensing still applies — public endpoints are for prototyping; commercial use
+needs agreements with the league or its stats provider (e.g. Genius Sports for FIBA LiveStats).
 
 ---
 
